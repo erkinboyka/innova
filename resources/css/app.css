@@ -1,11 +1,107 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+@layer base {
+  :root {
+    --bg-dark: #050a14;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --red-tj: #ff3b3b;
+    --green-tj: #00ff66;
+    --gold-tj: #ffd700;
+  }
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+  body {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    font-family: 'Figtree', sans-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glow-red {
+    box-shadow: 0 0 30px rgba(255, 59, 59, 0.4), inset 0 0 10px rgba(255, 59, 59, 0.2);
+    border: 1px solid rgba(255, 59, 59, 0.5);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 30px rgba(0, 255, 102, 0.4), inset 0 0 10px rgba(0, 255, 102, 0.2);
+    border: 1px solid rgba(0, 255, 102, 0.5);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4), inset 0 0 10px rgba(255, 215, 0, 0.2);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.2);
+  }
+
+  .text-red-tj {
+    color: var(--red-tj);
+  }
+
+  .text-green-tj {
+    color: var(--green-tj);
+  }
+
+  .text-gold-tj {
+    color: var(--gold-tj);
+  }
+}
+
+.mesh-gradient {
+  background-image: 
+    radial-gradient(ellipse at 10% 20%, rgba(255, 59, 59, 0.15) 0, transparent 40%),
+    radial-gradient(ellipse at 90% 80%, rgba(0, 255, 102, 0.1) 0, transparent 40%),
+    radial-gradient(ellipse at 50% 100%, rgba(255, 215, 0, 0.05) 0, transparent 40%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 102, 255, 0.1) 0, transparent 40%);
+  background-color: var(--bg-dark);
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@layer utilities {
+  .line-clamp-2,
+  .line-clamp-3,
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    -webkit-line-clamp: 3;
+  }
+
+  .line-clamp-4 {
+    -webkit-line-clamp: 4;
+  }
 }
